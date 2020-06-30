@@ -1,0 +1,183 @@
+[
+    {
+        "uid": "694c34b7-8051-4276-9f6e-8b7ccf24a558",
+        "email": "fatma.koyluoglu@example.com",
+        "password": "harmony",
+        "firstName": "Fatma",
+        "lastName": "Köylüoğlu",
+        "phone": "(772)-580-3228",
+        "dob": "1971-04-08",
+        "gender": "female",
+        "photo": "https://randomuser.me/api/portraits/med/women/76.jpg",
+        "regDate": "2015-12-04T23:38:59.863Z",
+        "address": {
+            "city": "Tekirdağ",
+            "state": "Kastamonu",
+            "country": "Turkey"
+        }
+
+    },
+    {
+        "uid": "e319e781-49e1-4c10-aa26-f4ef193e7eb4",
+        "email": "tuba.fennema@example.com",
+        "password": "brooklyn",
+        "firstName": "Tuba",
+        "lastName": "Fennema",
+        "phone": "(357)-120-0552",
+        "dob": "1993-07-10",
+        "gender": "female",
+        "photo": "https://randomuser.me/api/portraits/med/women/8.jpg",
+        "regDate": "2018-10-06T13:30:11.421Z",
+        "address": {
+            "city": "Made",
+            "state": "Flevoland",
+            "country": "Netherlands"
+        }
+
+    },
+    {
+        "uid": "bd0b86d9-31a1-49a4-bb53-2e829b0ad795",
+        "email": "morris.simmmons@example.com",
+        "password": "pride",
+        "firstName": "Morris",
+        "lastName": "Simmmons",
+        "phone": "0422-703-907",
+        "dob": "1993-05-06",
+        "gender": "male",
+        "photo": "https://randomuser.me/api/portraits/med/men/18.jpg",
+        "regDate": "2011-04-21T11:51:25.873Z",
+        "address": {
+            "city": "Geraldton",
+            "state": "Victoria",
+            "country": "Australia"
+        }
+
+    },
+    {
+        "uid": "ebec61cc-526b-4eb4-98ff-06f8a549caa3",
+        "email": "seth.phillips@example.com",
+        "password": "luke",
+        "firstName": "Seth",
+        "lastName": "Phillips",
+        "phone": "0455-991-128",
+        "dob": "1968-02-28",
+        "gender": "male",
+        "photo": "https://randomuser.me/api/portraits/med/men/54.jpg",
+        "regDate": "2018-08-28T09:42:59.015Z",
+        "address": {
+            "city": "Ballarat",
+            "state": "Victoria",
+            "country": "Australia"
+        }
+
+    },
+    {
+        "uid": "90865bc8-5174-4d4d-83f3-6290c57fc121",
+        "email": "loretta.bickel@example.com",
+        "password": "vanessa",
+        "firstName": "Loretta",
+        "lastName": "Bickel",
+        "phone": "0174-9191875",
+        "dob": "1977-01-26",
+        "gender": "female",
+        "photo": "https://randomuser.me/api/portraits/med/women/75.jpg",
+        "regDate": "2002-11-30T12:34:19.220Z",
+        "address": {
+            "city": "Rösrath",
+            "state": "Niedersachsen",
+            "country": "Germany"
+        }
+
+    },
+    {
+        "uid": "5530e944-27ff-4039-86b3-e6cfe01c945a",
+        "email": "giacomo.garnier@example.com",
+        "password": "heynow",
+        "firstName": "Giacomo",
+        "lastName": "Garnier",
+        "phone": "076 123 26 96",
+        "dob": "1966-01-10",
+        "gender": "male",
+        "photo": "https://randomuser.me/api/portraits/med/men/95.jpg",
+        "regDate": "2015-12-25T18:00:28.438Z",
+        "address": {
+            "city": "Nuglar-St. Pantaleon",
+            "state": "Genève",
+            "country": "Switzerland"
+        }
+
+    },
+    {
+        "uid": "7a8396c1-4469-4fec-b30b-42595a513221",
+        "email": "ignacio.nunez@example.com",
+        "password": "caught",
+        "firstName": "Ignacio",
+        "lastName": "Nuñez",
+        "phone": "698-525-945",
+        "dob": "1951-08-29",
+        "gender": "male",
+        "photo": "https://randomuser.me/api/portraits/med/men/59.jpg",
+        "regDate": "2008-01-03T01:24:31.731Z",
+        "address": {
+            "city": "La Coruña",
+            "state": "La Rioja",
+            "country": "Spain"
+        }
+
+    },
+    {
+        "uid": "26b87f16-f9ca-46df-b24c-14c2bab527b0",
+        "email": "chris.hoffman@example.com",
+        "password": "burly",
+        "firstName": "Chris",
+        "lastName": "Hoffman",
+        "phone": "0753-335-577",
+        "dob": "1958-04-03",
+        "gender": "male",
+        "photo": "https://randomuser.me/api/portraits/med/men/17.jpg",
+        "regDate": "2015-11-15T14:09:50.917Z",
+        "address": {
+            "city": "Worcester",
+            "state": "Central",
+            "country": "United Kingdom"
+        }
+
+    },
+    {
+        "uid": "c7933c45-7a3b-4ac8-bb50-04df7795255a",
+        "email": "oguzhan.kavaklioglu@example.com",
+        "password": "pioneer",
+        "firstName": "Oğuzhan",
+        "lastName": "Kavaklıoğlu",
+        "phone": "(429)-362-5771",
+        "dob": "1958-04-26",
+        "gender": "male",
+        "photo": "https://randomuser.me/api/portraits/med/men/96.jpg",
+        "regDate": "2016-06-24T14:20:42.900Z",
+        "address": {
+            "city": "Uşak",
+            "state": "Edirne",
+            "country": "Turkey"
+        }
+
+    },
+    {
+        "uid": "1f88c087-f124-41bc-a1a8-f46ef41300e9",
+        "email": "alfred.thomsen@example.com",
+        "password": "bearbear",
+        "firstName": "Alfred",
+        "lastName": "Thomsen",
+        "phone": "13013585",
+        "dob": "1959-05-26",
+        "gender": "male",
+        "photo": "https://randomuser.me/api/portraits/med/men/91.jpg",
+        "regDate": "2008-12-31T05:17:34.992Z",
+        "address": {
+            "city": "Aaborg Øst",
+            "state": "Nordjylland",
+            "country": "Denmark"
+        }
+
+    }
+    
+]
