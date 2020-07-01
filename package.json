@@ -1,0 +1,19 @@
+{
+  "name": "rest-restaurants",
+  "version": "1.0.0",
+  "description": "REST API for restaurants reviews and reservations",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app"
+  },
+  "author": "Omar Alghamdi",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
