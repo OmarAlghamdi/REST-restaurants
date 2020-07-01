@@ -1,10 +1,10 @@
 {
   "name": "rest-restaurants",
   "version": "1.0.0",
-  "description": "REST API for restaurants reviews and reservations",
+  "description": "REST API for restaurants reviews",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app",
     "dev": "nodemon app"
   },
   "author": "Omar Alghamdi",
