@@ -153,7 +153,7 @@ class JsonDataProvider {
                     latlng: latlng,
                     photograph: photograph,
                     cuisine_type: type,
-                    genoperating_hoursder: hours
+                    operating_hoursder: hours
                 }
 
                 this.#restaurants[id] = updatedRestaurant;
@@ -183,8 +183,13 @@ class JsonDataProvider {
     getReview(restaurant_id, id) {
         return new Promise( (resolve, reject) => {
             if (id < this.#reviews.length) {
+                const review = this.#reviews[id];
+                if (review.restaurant == restaurant_id){
+                    resolve(this.#reviews[id]);
+                } else {
+                    reject('Review does not exists');
+                }
                 
-                resolve(this.#reviews[id]);
             } else {
                 reject('Review does not exists');
             }

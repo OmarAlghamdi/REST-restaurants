@@ -11,8 +11,8 @@ const app = express();
 
 // mounts routers
 app.use('/api/users', usersRouter);
-// app.use('/api/restaurants', restaurantsRouter);
-// app.use('/api/reviews', reviewsRouter);
+app.use('/api/restaurants', restaurantsRouter);
+app.use('/api/reviews', reviewsRouter);
 
 const server = http.createServer(app);
 
