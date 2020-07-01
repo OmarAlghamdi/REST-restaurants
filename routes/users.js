@@ -9,7 +9,13 @@ const data = new DataProvider(path.resolve('./data'));
 const userRouter = express.Router();
 userRouter.use(bodyParser.json());
 
-
+/**
+ * PATH:    /api/users
+ * METHODS:
+ *      GET:    returns all users
+ *      POST:   body-args: email, password, firstName, lastName, phone, gender,
+ *              dob, address
+ */
 userRouter.route('/')
     .all( (req, res, next) => {
         res.setHeader('Content-Type', 'application/json');
@@ -31,6 +37,15 @@ userRouter.route('/')
             });
     });
 
+/**
+ * PATH:    /api/users
+ * PARAMS:  <Number>    user index
+ * METHODS:
+ *      GET:    returns a paricular user
+ *      PUT:    body-args: email, password, firstName, lastName, phone, gender,
+ *              dob, address
+ *      DELETE: 
+ */
 userRouter.route('/:id')
     .all( (req, res, next) => {
         res.setHeader('Content-Type', 'application/json');

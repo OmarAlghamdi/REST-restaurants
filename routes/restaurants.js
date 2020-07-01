@@ -9,7 +9,13 @@ const data = new DataProvider(path.resolve('./data'));
 const restaurantRouter =  express.Router();
 restaurantRouter.use(bodyParser.json());
 
-
+/**
+ * PATH:    /api/restaurants
+ * METHODS:
+ *      GET:    returns all restaurants
+ *      POST:   body-args: name, neighborhood, address, latlng, photograph,
+ *              type, hours
+ */
 restaurantRouter.route('/')
     .all( (req, res, next) => {
         res.setHeader('Content-Type', 'application/json');
@@ -34,6 +40,15 @@ restaurantRouter.route('/')
             });
     });
 
+/**
+ * PATH:    /api/restaurants
+ * PARAMS:  <Number>    restaurant index
+ * METHODS:
+ *      GET:    returns a praticualr restaurant
+ *      PUT:    body-args: name, neighborhood, address, latlng, photograph,
+ *              type, hours
+ *      DELETE:
+ */
 restaurantRouter.route('/:id')
     .all( (req, res, next) => {
         res.setHeader('Content-Type', 'application/json');

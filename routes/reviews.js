@@ -9,7 +9,11 @@ const data = new DataProvider(path.resolve('./data'));
 const reviewRouter =  express.Router();
 reviewRouter.use(bodyParser.json());
 
-
+/**
+ * PATH: /api/reviews
+ * METHODS:
+ *      POST:   body-args: restaurant, user, rating, comments
+ */
 reviewRouter.route('/')
     .all( (req, res, next) => {
         res.setHeader('Content-Type', 'application/json');
@@ -26,6 +30,12 @@ reviewRouter.route('/')
             });
     });
 
+/**
+ * PATH:    /api/reviews
+ * PARAMS:  <Number>    restauran_Id
+ * METHODS:
+ *      GET:   reviews for a particular restaurant
+ */
 reviewRouter.route('/:restaurant')
     .all( (req, res, next) => {
         res.setHeader('Content-Type', 'application/json');
@@ -42,6 +52,12 @@ reviewRouter.route('/:restaurant')
             });
     });
 
+/**
+ * PATH:    /api/reviews
+ * PARAMS:  <Number>,<Number>    restauran_Id, review index
+ * METHODS:
+ *      GET:   a particular review
+ */
 reviewRouter.route('/:restaurant/:id')
     .all( (req, res, next) => {
         res.setHeader('Content-Type', 'application/json');
@@ -58,6 +74,14 @@ reviewRouter.route('/:restaurant/:id')
             })
     })
 
+/**
+ * PATH:    /api/reviews
+ * PARAMS:  <Number>    review index
+ * METHODS:
+ *      PUT:   updates a reivew
+ *             body-args: restaurant, user, rating, comments
+ *      DELETE: 
+ */
 reviewRouter.route('/:id')
     .all( (req, res, next) => {
         res.setHeader('Content-Type', 'application/json');
