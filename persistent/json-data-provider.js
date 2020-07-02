@@ -1,5 +1,6 @@
 const fs = require('fs').promises;
 const path = require('path');
+const { EventEmitter } = require('events');
 
 const idGen = require('../utils').idGen;
 
@@ -12,9 +13,11 @@ class JsonDataProvider {
     /**
      * 
      * @param {String} _path path to the folder containing JSON files
+     * @param {EventEmitter} eventEmitter 
      */
-    constructor(_path){
+    constructor(_path, eventEmitter){
         this.#path = _path;
+        this.eventEmitter = eventEmitter;
 
         // preload josn files
         fs.readFile(path.join(this.#path, 'users.json'))
@@ -87,7 +90,10 @@ class JsonDataProvider {
 
             // commits change to file
             fs.writeFile(path.join(this.#path, 'users.json'), JSON.stringify(this.#users), 'utf8')
-                .then( () => resolve(true) )
+                .then( () => {
+                    this.eventEmitter.emit('file-write', 'users.json', new Date(Date.now()).toISOString());
+                    resolve(true);
+                } )
                 .catch( err => reject(err) );
         });
     }
@@ -126,7 +132,10 @@ class JsonDataProvider {
 
                 // commits change to file
                 fs.writeFile(path.join(this.#path, 'users.json'), JSON.stringify(this.#users), 'utf8')
-                    .then( () => resolve(true) )
+                    .then( () => {
+                        this.eventEmitter.emit('file-write', 'users.json', new Date(Date.now()).toISOString());
+                        resolve(true);
+                    } )
                     .catch( err => reject(err) );
             
             } else {
@@ -147,7 +156,10 @@ class JsonDataProvider {
 
                 // commits change to file
                 fs.writeFile(path.join(this.#path, 'users.json'), JSON.stringify(this.#users), 'utf8')
-                    .then( () => resolve(true) )
+                    .then( () => {
+                        this.eventEmitter.emit('file-write', 'users.json', new Date(Date.now()).toISOString());
+                        resolve(true);
+                    } )
                     .catch( err => reject(err) );
             } else {
                 reject('User does not exists');
@@ -207,7 +219,10 @@ class JsonDataProvider {
 
             // commits change to file
             fs.writeFile(path.join(this.#path, 'restaurants.json'), JSON.stringify(this.#restaurants), 'utf8')
-                .then( () => resolve(true) )
+                .then( () => {
+                    this.eventEmitter.emit('file-write', 'restaurants.json', new Date(Date.now()).toISOString());
+                    resolve(true);
+                } )
                 .catch( err => reject(err) );
         });
     }
@@ -240,7 +255,10 @@ class JsonDataProvider {
                 this.#restaurants[id] = updatedRestaurant;
 
                 fs.writeFile(path.join(this.#path, 'restaurants.json'), JSON.stringify(this.#restaurants), 'utf8')
-                    .then( () => resolve(true) )
+                    .then( () => {
+                        this.eventEmitter.emit('file-write', 'restaurants.json', new Date(Date.now()).toISOString());
+                        resolve(true);
+                    } )
                     .catch( err => reject(err) );
             } else {
                 reject('Restaurant does not exists');
@@ -260,7 +278,10 @@ class JsonDataProvider {
                 
                 // commits change to file
                 fs.writeFile(path.join(this.#path, 'restaurants.json'), JSON.stringify(this.#restaurants), 'utf8')
-                    .then(() => resolve(true))
+                    .then( () => {
+                        this.eventEmitter.emit('file-write', 'restaurants.json', new Date(Date.now()).toISOString());
+                        resolve(true);
+                    } )
                     .catch(err => reject(err));
             } else {
                 reject('Restaurant does not exists');
@@ -322,7 +343,10 @@ class JsonDataProvider {
 
             // commits change to file
             fs.writeFile(path.join(this.#path, 'reviews.json'), JSON.stringify(this.#reviews), 'utf8')
-                .then( () => resolve(true) )
+                .then( () => {
+                    this.eventEmitter.emit('file-write', 'reviews.json', new Date(Date.now()).toISOString());
+                    resolve(true);
+                } )
                 .catch( err => reject(err) );
         });
     }
@@ -350,7 +374,10 @@ class JsonDataProvider {
 
                 // commits change to file
                 fs.writeFile(path.join(this.#path, 'reviews.json'), JSON.stringify(this.#reviews), 'utf8')
-                    .then( () => resolve(true) )
+                    .then( () => {
+                        this.eventEmitter.emit('file-write', 'reviews.json', new Date(Date.now()).toISOString());
+                        resolve(true);
+                    } )
                     .catch( err => reject(err) );
             } else {
                 reject('Review does not exists');
@@ -368,7 +395,10 @@ class JsonDataProvider {
             if (id < this.#reviews.length){
                 this.#reviews.splice(id, 1);
                 fs.writeFile(path.join(this.#path, 'reviews.json'), JSON.stringify(this.#reviews), 'utf8')
-                    .then(() => resolve(true))
+                    .then( () => {
+                        this.eventEmitter.emit('file-write', 'reviews.json', new Date(Date.now()).toISOString());
+                        resolve(true);
+                    } )
                     .catch(err => reject(err));
             } else {
                 reject('Review does not exists');
@@ -376,7 +406,5 @@ class JsonDataProvider {
         })
     }
 }
-
-
 
 module.exports = JsonDataProvider;
