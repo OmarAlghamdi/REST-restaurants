@@ -5,31 +5,26 @@ const { EventEmitter } = require('events');
 const idGen = require('../utils').idGen;
 
 class JsonDataProvider {
-    #path;
-    #users;
-    #restaurants;
-    #reviews;
-    
     /**
      * 
      * @param {String} _path path to the folder containing JSON files
      * @param {EventEmitter} eventEmitter 
      */
     constructor(_path, eventEmitter){
-        this.#path = _path;
+        this.dataPath = _path;
         this.eventEmitter = eventEmitter;
 
         // preload josn files
-        fs.readFile(path.join(this.#path, 'users.json'))
-            .then(data => this.#users = JSON.parse(data))
+        fs.readFile(path.join(this.dataPath, 'users.json'))
+            .then(data => this.users = JSON.parse(data))
             .catch(err => console.error(err));
 
-        fs.readFile(path.join(this.#path, 'restaurants.json'))
-            .then(data => this.#restaurants = JSON.parse(data))
+        fs.readFile(path.join(this.dataPath, 'restaurants.json'))
+            .then(data => this.restaurants = JSON.parse(data))
             .catch(err => console.error(err));
 
-        fs.readFile(path.join(this.#path, 'reviews.json'))
-            .then(data => this.#reviews = JSON.parse(data))
+        fs.readFile(path.join(this.dataPath, 'reviews.json'))
+            .then(data => this.reviews = JSON.parse(data))
             .catch(err => console.error(err));
     }
 
@@ -40,8 +35,8 @@ class JsonDataProvider {
      */
     getUser(id) {
         return new Promise( (resolve, reject) => {
-            if (id < this.#users.length) {
-                resolve(this.#users[id]);
+            if (id < this.users.length) {
+                resolve(this.users[id]);
             } else {
                 reject('User does not exists');
             }
@@ -54,7 +49,7 @@ class JsonDataProvider {
      */
     getUsers(){
         return new Promise( (resolve, reject) => {
-            resolve(this.#users);
+            resolve(this.users);
         });
     }
 
@@ -86,10 +81,10 @@ class JsonDataProvider {
                 address: address
             }
 
-            this.#users.push(newUser);
+            this.users.push(newUser);
 
             // commits change to file
-            fs.writeFile(path.join(this.#path, 'users.json'), JSON.stringify(this.#users), 'utf8')
+            fs.writeFile(path.join(this.dataPath, 'users.json'), JSON.stringify(this.users), 'utf8')
                 .then( () => {
                     this.eventEmitter.emit('file-write', 'users.json', new Date(Date.now()).toISOString());
                     resolve(true);
@@ -113,10 +108,10 @@ class JsonDataProvider {
      */
     updateUser(id, email, password, firstName, lastName, phone, gender, dob, address) {
         return new Promise( (resolve, reject) => {
-            if (id < this.#users.length) {
+            if (id < this.users.length) {
                 const updatedUser = {
-                    uid: this.#users[id].uid,
-                    regDate: this.#users[id].regDate,
+                    uid: this.users[id].uid,
+                    regDate: this.users[id].regDate,
                     email: email,
                     password: password,
                     firstName: firstName,
@@ -128,10 +123,10 @@ class JsonDataProvider {
                     address: address
                 }
 
-                this.#users[id] = updatedUser;
+                this.users[id] = updatedUser;
 
                 // commits change to file
-                fs.writeFile(path.join(this.#path, 'users.json'), JSON.stringify(this.#users), 'utf8')
+                fs.writeFile(path.join(this.dataPath, 'users.json'), JSON.stringify(this.users), 'utf8')
                     .then( () => {
                         this.eventEmitter.emit('file-write', 'users.json', new Date(Date.now()).toISOString());
                         resolve(true);
@@ -151,11 +146,11 @@ class JsonDataProvider {
      */
     deleteUser(id){
         return new Promise( (resolve, reject) => {
-            if (id < this.#users.length){
-                this.#users.splice(id, 1);
+            if (id < this.users.length){
+                this.users.splice(id, 1);
 
                 // commits change to file
-                fs.writeFile(path.join(this.#path, 'users.json'), JSON.stringify(this.#users), 'utf8')
+                fs.writeFile(path.join(this.dataPath, 'users.json'), JSON.stringify(this.users), 'utf8')
                     .then( () => {
                         this.eventEmitter.emit('file-write', 'users.json', new Date(Date.now()).toISOString());
                         resolve(true);
@@ -174,8 +169,8 @@ class JsonDataProvider {
      */
     getRestaurant(id) {
         return new Promise( (resolve, reject) => {
-            if (id < this.#restaurants.length) {
-                resolve(this.#restaurants[id]);
+            if (id < this.restaurants.length) {
+                resolve(this.restaurants[id]);
             } else {
                 reject('Restaurant does not exists');
             }
@@ -187,7 +182,7 @@ class JsonDataProvider {
      */
     getRestaurants(){
         return new Promise( (resolve, reject) => {
-            resolve(this.#restaurants);
+            resolve(this.restaurants);
         });
     }
 
@@ -205,7 +200,7 @@ class JsonDataProvider {
     addRestaurant(name, neighborhood, address, latlng, photograph, type, hours) {
         return new Promise( (resolve, reject) => {
             const newRestaurant = {
-                id: this.#restaurants.length +1,
+                id: this.restaurants.length +1,
                 name: name,
                 neighborhood: neighborhood,
                 address: address,
@@ -215,10 +210,10 @@ class JsonDataProvider {
                 operating_hours: hours
             }
 
-            this.#restaurants.push(newRestaurant);
+            this.restaurants.push(newRestaurant);
 
             // commits change to file
-            fs.writeFile(path.join(this.#path, 'restaurants.json'), JSON.stringify(this.#restaurants), 'utf8')
+            fs.writeFile(path.join(this.dataPath, 'restaurants.json'), JSON.stringify(this.restaurants), 'utf8')
                 .then( () => {
                     this.eventEmitter.emit('file-write', 'restaurants.json', new Date(Date.now()).toISOString());
                     resolve(true);
@@ -240,9 +235,9 @@ class JsonDataProvider {
      */
     updateRestaurant(id, name, neighborhood, address, latlng, photograph, type, hours) {
         return new Promise( (resolve, reject) => {
-            if (id < this.#restaurants.length) {
+            if (id < this.restaurants.length) {
                 const updatedRestaurant = {
-                    id: this.#restaurants[id].id,
+                    id: this.restaurants[id].id,
                     name: name,
                     neighborhood: neighborhood,
                     address: address,
@@ -252,9 +247,9 @@ class JsonDataProvider {
                     operating_hoursder: hours
                 }
 
-                this.#restaurants[id] = updatedRestaurant;
+                this.restaurants[id] = updatedRestaurant;
 
-                fs.writeFile(path.join(this.#path, 'restaurants.json'), JSON.stringify(this.#restaurants), 'utf8')
+                fs.writeFile(path.join(this.dataPath, 'restaurants.json'), JSON.stringify(this.restaurants), 'utf8')
                     .then( () => {
                         this.eventEmitter.emit('file-write', 'restaurants.json', new Date(Date.now()).toISOString());
                         resolve(true);
@@ -273,11 +268,11 @@ class JsonDataProvider {
      */
     deleteRestaurant(id){
         return new Promise( (resolve, reject) => {
-            if (id < this.#restaurants.length){
-                this.#restaurants.splice(id, 1);
+            if (id < this.restaurants.length){
+                this.restaurants.splice(id, 1);
                 
                 // commits change to file
-                fs.writeFile(path.join(this.#path, 'restaurants.json'), JSON.stringify(this.#restaurants), 'utf8')
+                fs.writeFile(path.join(this.dataPath, 'restaurants.json'), JSON.stringify(this.restaurants), 'utf8')
                     .then( () => {
                         this.eventEmitter.emit('file-write', 'restaurants.json', new Date(Date.now()).toISOString());
                         resolve(true);
@@ -297,10 +292,10 @@ class JsonDataProvider {
      */
     getReview(restaurant_id, id) {
         return new Promise( (resolve, reject) => {
-            if (id < this.#reviews.length) {
-                const review = this.#reviews[id];
+            if (id < this.reviews.length) {
+                const review = this.reviews[id];
                 if (review.restaurant == restaurant_id){
-                    resolve(this.#reviews[id]);
+                    resolve(this.reviews[id]);
                 } else {
                     reject('Review does not exists');
                 }
@@ -318,7 +313,7 @@ class JsonDataProvider {
      */
     getReviews(restaurant_id){
         return new Promise( (resolve, reject) => {
-            resolve(this.#reviews.filter(review => review.restaurant == restaurant_id));
+            resolve(this.reviews.filter(review => review.restaurant == restaurant_id));
         });
     }
 
@@ -339,10 +334,10 @@ class JsonDataProvider {
                 comments: comments
             }
 
-            this.#reviews.push(newReview);
+            this.reviews.push(newReview);
 
             // commits change to file
-            fs.writeFile(path.join(this.#path, 'reviews.json'), JSON.stringify(this.#reviews), 'utf8')
+            fs.writeFile(path.join(this.dataPath, 'reviews.json'), JSON.stringify(this.reviews), 'utf8')
                 .then( () => {
                     this.eventEmitter.emit('file-write', 'reviews.json', new Date(Date.now()).toISOString());
                     resolve(true);
@@ -362,7 +357,7 @@ class JsonDataProvider {
      */
     updateReview(id, restaurant, user, rating, comments) {
         return new Promise( (resolve, reject) => {
-            if (id < this.#reviews.length) {
+            if (id < this.reviews.length) {
                 const updatedReview = {
                     restaurant: restaurant,
                     user: user,
@@ -370,10 +365,10 @@ class JsonDataProvider {
                     comments: comments,
                 }
 
-                this.#reviews[id] = updatedReview;
+                this.reviews[id] = updatedReview;
 
                 // commits change to file
-                fs.writeFile(path.join(this.#path, 'reviews.json'), JSON.stringify(this.#reviews), 'utf8')
+                fs.writeFile(path.join(this.dataPath, 'reviews.json'), JSON.stringify(this.reviews), 'utf8')
                     .then( () => {
                         this.eventEmitter.emit('file-write', 'reviews.json', new Date(Date.now()).toISOString());
                         resolve(true);
@@ -392,9 +387,9 @@ class JsonDataProvider {
      */
     deleteReview(id){
         return new Promise( (resolve, reject) => {
-            if (id < this.#reviews.length){
-                this.#reviews.splice(id, 1);
-                fs.writeFile(path.join(this.#path, 'reviews.json'), JSON.stringify(this.#reviews), 'utf8')
+            if (id < this.reviews.length){
+                this.reviews.splice(id, 1);
+                fs.writeFile(path.join(this.dataPath, 'reviews.json'), JSON.stringify(this.reviews), 'utf8')
                     .then( () => {
                         this.eventEmitter.emit('file-write', 'reviews.json', new Date(Date.now()).toISOString());
                         resolve(true);

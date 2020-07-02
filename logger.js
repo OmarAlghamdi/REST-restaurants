@@ -4,13 +4,12 @@ const fs = require('fs');
  * Simple logger that writes the log string message to a .txt file
  */
 class Logger{
-    #logs
     /**
      * 
      * @param {String} logs_path path to the file holding logs
      */
     constructor(logs_path){
-        this.#logs = logs_path;
+        this.logs = logs_path;
     }
 
     /**
@@ -18,7 +17,7 @@ class Logger{
      * @param {String} data log message
      */
     log(data){
-        fs.appendFile(this.#logs, data+'\n', 'utf8', (err) => {
+        fs.appendFile(this.logs, data+'\n', 'utf8', (err) => {
             if (err){
                 console.error(err);
             }
