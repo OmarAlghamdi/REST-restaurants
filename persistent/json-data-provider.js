@@ -14,7 +14,7 @@ class JsonDataProvider {
         this.dataPath = _path;
         this.eventEmitter = eventEmitter;
 
-        // preload josn files
+        // preload json files
         fs.readFile(path.join(this.dataPath, 'users.json'))
             .then(data => this.users = JSON.parse(data))
             .catch(err => console.error(err));
@@ -63,7 +63,7 @@ class JsonDataProvider {
      * @param {String} gender male or female
      * @param {String} dob YYYY-MM-DD
      * @param {Object} address props: <String> city, state & country
-     * @returns {Promise.<Boolean|err>} returns ture if added successfully
+     * @returns {Promise.<Boolean|err>} returns true if added successfully
      */
     addUser(email, password, firstName, lastName, phone, gender, dob, address) {
         return new Promise( (resolve, reject) => {
@@ -104,7 +104,7 @@ class JsonDataProvider {
      * @param {String} gender male or female
      * @param {String} dob YYYY-MM-DD
      * @param {oBJECT} address props: <String> city, state & country
-     * @returns {Promise.<Boolean|err>} returns ture if updated successfully
+     * @returns {Promise.<Boolean|err>} returns true if updated successfully
      */
     updateUser(id, email, password, firstName, lastName, phone, gender, dob, address) {
         return new Promise( (resolve, reject) => {
@@ -142,7 +142,7 @@ class JsonDataProvider {
     /**
      * 
      * @param {Number} id array index
-     * @returns {Promise.<Boolean|err>} returns ture if deleted successfully
+     * @returns {Promise.<Boolean|err>} returns true if deleted successfully
      */
     deleteUser(id){
         return new Promise( (resolve, reject) => {
@@ -195,7 +195,7 @@ class JsonDataProvider {
      * @param {String} photograph link
      * @param {String} type cuisine type
      * @param {Object} hours opening hours. props: <String> Monday~Sunday. example: 5:30 pm - 11:00 pm
-     * @returns {Promise.<Boolean|err>} returns ture if added successfully
+     * @returns {Promise.<Boolean|err>} returns true if added successfully
      */
     addRestaurant(name, neighborhood, address, latlng, photograph, type, hours) {
         return new Promise( (resolve, reject) => {
@@ -231,7 +231,7 @@ class JsonDataProvider {
      * @param {String} photograph link
      * @param {String} type cuisine type
      * @param {Object} hours opening hours. props: <String> Monday~Sunday. example: 5:30 pm - 11:00 pm
-     * @returns {Promise.<Boolean|err>} returns ture if updated successfully
+     * @returns {Promise.<Boolean|err>} returns true if updated successfully
      */
     updateRestaurant(id, name, neighborhood, address, latlng, photograph, type, hours) {
         return new Promise( (resolve, reject) => {
@@ -264,7 +264,7 @@ class JsonDataProvider {
     /**
      * 
      * @param {Number} id array index
-     * @returns {Promise.<Boolean|err>} returns ture if deleted successfully
+     * @returns {Promise.<Boolean|err>} returns true if deleted successfully
      */
     deleteRestaurant(id){
         return new Promise( (resolve, reject) => {
@@ -287,7 +287,7 @@ class JsonDataProvider {
     /**
      * 
      * @param {Number} restaurant_id restaurant Id
-     * @param {Number} id array indes
+     * @param {Number} id array index
      * @returns {Promise.<Object|String>} review|error message
      */
     getReview(restaurant_id, id) {
@@ -323,7 +323,7 @@ class JsonDataProvider {
      * @param {String} user user Id
      * @param {Number} rating 1~5
      * @param {String} comments review
-     * @returns {Promise.<Boolean|err>} returns ture if added successfully
+     * @returns {Promise.<Boolean|err>} returns true if added successfully
      */
     addReview(restaurant, user, rating, comments) {
         return new Promise( (resolve, reject) => {
@@ -353,7 +353,7 @@ class JsonDataProvider {
      * @param {String} user user Id
      * @param {Number} rating 1~5
      * @param {String} comments review
-     * @returns {Promise.<Boolean|err>} returns ture if updated successfully
+     * @returns {Promise.<Boolean|err>} returns true if updated successfully
      */
     updateReview(id, restaurant, user, rating, comments) {
         return new Promise( (resolve, reject) => {
@@ -383,7 +383,7 @@ class JsonDataProvider {
     /**
      * 
      * @param {Number} id array index
-     * @returns {Promise.<Boolean|err>} returns ture if deleted successfully
+     * @returns {Promise.<Boolean|err>} returns true if deleted successfully
      */
     deleteReview(id){
         return new Promise( (resolve, reject) => {

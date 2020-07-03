@@ -32,7 +32,7 @@ const init = (data) => {
     
     /**
      * PATH:    /api/reviews
-     * PARAMS:  <Number>    restauran_Id
+     * PARAMS:  <Number>    restaurant_Id
      * METHODS:
      *      GET:   reviews for a particular restaurant
      */
@@ -54,7 +54,7 @@ const init = (data) => {
     
     /**
      * PATH:    /api/reviews
-     * PARAMS:  <Number>,<Number>    restauran_Id, review index
+     * PARAMS:  <Number>,<Number>    restaurant_Id, review index
      * METHODS:
      *      GET:   a particular review
      */
@@ -78,7 +78,7 @@ const init = (data) => {
      * PATH:    /api/reviews
      * PARAMS:  <Number>    review index
      * METHODS:
-     *      PUT:   updates a reivew
+     *      PUT:   updates a review
      *             body-args: restaurant, user, rating, comments
      *      DELETE: 
      */

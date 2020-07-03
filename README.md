@@ -1,5 +1,5 @@
 # REST Restaurants
-Simple REST API ffor restaurant reviews. 
+Simple REST API for restaurant reviews. 
 
 The REST API operates on JSON files containing the data.
 - `./data/users`

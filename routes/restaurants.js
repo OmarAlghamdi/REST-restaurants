@@ -44,7 +44,7 @@ const init = (data) => {
      * PATH:    /api/restaurants
      * PARAMS:  <Number>    restaurant index
      * METHODS:
-     *      GET:    returns a praticualr restaurant
+     *      GET:    returns a particular restaurant
      *      PUT:    body-args: name, neighborhood, address, latlng, photograph,
      *              type, hours
      *      DELETE:

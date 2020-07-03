@@ -23,7 +23,7 @@ const init = (data) => {
         })
         .get( (req, res) => {
             data.getUsers()
-                .then(usres => res.json(usres))
+                .then(users => res.json(users))
                 .catch(err => console.error(err));
         })
         .post( (req, res) => {
@@ -41,7 +41,7 @@ const init = (data) => {
      * PATH:    /api/users
      * PARAMS:  <Number>    user index
      * METHODS:
-     *      GET:    returns a paricular user
+     *      GET:    returns a particular user
      *      PUT:    body-args: email, password, firstName, lastName, phone, gender,
      *              dob, address
      *      DELETE: 
