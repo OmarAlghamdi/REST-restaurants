@@ -55,7 +55,7 @@ class JsonDataProvider {
 
     /**
      * 
-     * @param {Stromg} email 
+     * @param {String} email 
      * @param {String} password 
      * @param {String} firstName 
      * @param {String} lastName 
@@ -244,7 +244,7 @@ class JsonDataProvider {
                     latlng: latlng,
                     photograph: photograph,
                     cuisine_type: type,
-                    operating_hoursder: hours
+                    operating_hours: hours
                 }
 
                 this.restaurants[id] = updatedRestaurant;

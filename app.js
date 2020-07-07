@@ -15,8 +15,16 @@ eventEmitter.on('file-write', (file, timestamp) => {
 })
 
 // DataProvider abstracts data-layer 
-const DataProvider = require('./persistent/json-data-provider');
-const data = new DataProvider(path.resolve('./data'), eventEmitter);
+let data;
+if (process.argv[2] === 'json') {
+    console.log('Data Source: json files');
+    const DataProvider = require('./persistent/json-data-provider');
+    data = new DataProvider(path.resolve('./data'), eventEmitter);
+} else {
+    console.log('Data Source: MongoDB');
+    const DataProvider = require('./persistent/mongo-data-provider');
+    data = new DataProvider(process.env.MONGO_URL, process.env.MONGO_DB);
+}
 
 // DataProvider object is passed Router object
 const usersRouter = require('./routes/users')(data);
