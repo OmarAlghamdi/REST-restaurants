@@ -6,8 +6,8 @@ const mongoose = require('mongoose');
 class MongoDataProvider {
     /**
      * 
-     * @param {String} _path path to the folder containing JSON files
-     * @param {EventEmitter} eventEmitter 
+     * @param {String} url MongoDB url
+     * @param {String} dbName  database name
      */
     constructor(url, dbName) {
         // connect to the database
@@ -27,7 +27,12 @@ class MongoDataProvider {
     // TODO: correct types
     createSchemas() {
         const userSchema = new mongoose.Schema({
-            email:      { type: String, required: true, unique: true },
+            email: { type: String, required: true, unique: true, lowercase: true, trim: true, 
+                validate: {
+                    validator: function (v) {
+                        return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
+                }   }
+            },
             password:   { type: String, required: true },
             firstName:  { type: String, required: true },
             lastName:   { type: String, required: true },
@@ -47,7 +52,7 @@ class MongoDataProvider {
             restaurant: { type: String, required: true },
             user:       { type: String, required: true },
             date:       { type: String, required: true },
-            rating:     { type: Number, required: true },
+            rating:     { type: Number, required: true,  min: 1, max: 5},
             comments:   { type: String, required: true },
         });
 
